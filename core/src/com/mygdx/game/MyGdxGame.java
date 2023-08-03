@@ -35,6 +35,7 @@ public class MyGdxGame extends ApplicationAdapter {
 		world = new World(new Vector2(0, -10), true);
 
 		Ground ground = new Ground();
+		Ball ball = new Ball(new Vector2(100, 100), 10);
 	}
 
 	@Override
