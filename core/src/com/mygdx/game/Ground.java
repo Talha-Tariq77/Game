@@ -13,10 +13,10 @@ public class Ground {
 
         groundBody = MyGdxGame.world.createBody(groundBodyDef);
 
-        groundBodyDef.position.set(new Vector2(0, 10));
+        groundBodyDef.position.set(new Vector2(0, 2));
 
         PolygonShape groundBox = new PolygonShape();
-        groundBox.setAsBox(MyGdxGame.camera.viewportWidth, 10f);
+        groundBox.setAsBox(MyGdxGame.camera.viewportWidth, 2f);
 
         groundBody.createFixture(groundBox, 0.0f);
 

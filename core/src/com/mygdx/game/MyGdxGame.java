@@ -29,18 +29,22 @@ public class MyGdxGame extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		debugRenderer = new Box2DDebugRenderer();
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false, 800, 400);
+		camera.setToOrtho(false, 20, 20);
 		Box2D.init();
 
 		world = new World(new Vector2(0, -10), true);
 
 		Ground ground = new Ground();
-		Ball ball = new Ball(new Vector2(100, 100), 10);
+		Ball ball = new Ball(new Vector2(camera.viewportWidth/2, camera.viewportHeight/2), 0.3f);
+		Ball ball2 = new Ball(new Vector2(camera.viewportWidth/2, camera.viewportHeight/2 -3), 0.3f);
+		Ball ball3 = new Ball(new Vector2(camera.viewportWidth/2, camera.viewportHeight/2 - 5), 0.3f);
+
 	}
 
 	@Override
 	public void render () {
 		ScreenUtils.clear(0, 0, 0, 1);
+		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		batch.end();
 		debugRenderer.render(world, camera.combined);
