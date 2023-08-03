@@ -19,7 +19,8 @@ public class MyGdxGame extends ApplicationAdapter {
 
 	Box2DDebugRenderer debugRenderer;
 
-	OrthographicCamera camera;
+	public static OrthographicCamera camera;
+
 
 	Player player;
 	
@@ -33,6 +34,7 @@ public class MyGdxGame extends ApplicationAdapter {
 
 		world = new World(new Vector2(0, -10), true);
 
+		Ground ground = new Ground();
 	}
 
 	@Override
