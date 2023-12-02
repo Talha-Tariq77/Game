@@ -1,6 +1,8 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -39,10 +41,24 @@ public class MyGdxGame extends ApplicationAdapter {
 		Ball ball2 = new Ball(new Vector2(camera.viewportWidth/2, camera.viewportHeight/2 -3), 0.3f);
 		Ball ball3 = new Ball(new Vector2(camera.viewportWidth/2, camera.viewportHeight/2 - 5), 0.3f);
 
+		player = new Player(new Vector2(camera.viewportWidth/2, camera.viewportHeight/2 +5));
+
 	}
 
 	@Override
 	public void render () {
+		Vector2 pos = player.body.getPosition();
+		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+
+			player.body.applyLinearImpulse(3f, 0f, pos.x, pos.y, true);
+		}
+		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+
+			player.body.applyLinearImpulse(-3f, 0f, pos.x, pos.y, true);
+		}
+		camera.position.set(pos.x, pos.y, 0);
+		camera.update();
+
 		ScreenUtils.clear(0, 0, 0, 1);
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
